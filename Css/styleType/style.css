@@ -1,0 +1,13 @@
+#success {
+    color: rgb(93, 15, 171);
+    font-size: 18px;
+}
+.classic{
+    color: red;
+    font-size: 20px;
+}
+button{
+    color: white;
+    background-color: rgb(93, 15, 171);
+    font-size: 18px;
+}

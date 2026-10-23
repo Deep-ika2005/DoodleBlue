@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(250, 236, 252);
+    font-size:20px;
+    text-align:center;
+}
+h1{
+    color: rgb(150, 7, 166);
+    font-size: 30px;
+    font-weight: bolder;
+    padding : 20px;
+    margin:20px;
+    text-align:center;
+}
+a:hover{
+    color: rgb(84, 2, 77);
+    
+}

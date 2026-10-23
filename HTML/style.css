@@ -1,0 +1,16 @@
+#head{
+    color: blue;
+    font-size: 24px;
+}
+
+.para{
+    color: green;
+    font-size: 18px;    
+}
+section{
+    color:brown;
+}
+.event-table{
+    border: 1px solid black;
+    padding : 10px;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Event</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/event-img.jpg">
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1 id="head">Welcome To Campus Event</h1>
+            <p class="para">It gives me immense pleasure to welcome you all to this wonderful occasion. On behalf of our
+                college, I extend a warm and heartfelt welcome to our respected Chief Guest, beloved Principal, esteemed
+                faculty members, event coordinators, and all the enthusiastic participants gathered here today.</p>
+            <article>
+                <h2>Event Details</h2>
+                <p>This is a brief overview of the upcoming campus event.</p>
+                <p>Date: 15th July 2024</p>
+                <p>Time: 10:00 AM - 4:00 PM</p>
+                <p>Location: College Auditorium</p>
+            </article>
+        </section>
+        <img src="img/event-img.jpg" alt="Campus Event Image" class="event-image"> <br>
+
+        <ol type="1" style="color:blueviolet; font-size:20px; font-weight: bold">
+            <li>Opening Ceremony: 10:00 AM - 10:30 AM</li>
+            <li>Keynote Speech: 10:30 AM - 11:30 AM </li>
+            <li>Workshops: 11:30 AM - 1:00 PM</li>
+        </ol>
+        <table border='1'>
+            <caption> Event Schedule</caption>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                    <th>Location</th>
+                    <th>Speaker</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10:00 AM - 10:30 AM</td>
+                    <td>Opening Ceremony</td>
+                    <td>Main Auditorium</td>
+                    <td>Principal</td>
+                </tr>
+
+                <tr>
+                    <td>10:30 AM - 11:30 AM</td>
+                    <td>Keynote Speech</td>
+                    <td>Main Auditorium</td>
+                    <td>Guest Speaker</td>
+                </tr>
+
+                <tr>
+                    <td>11:30 AM - 1:00 PM</td>
+                    <td>Workshops</td>
+                    <td>Various Classrooms</td>
+                    <td>Faculty Members</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th colspan="4">Thank you for attending!</th>
+                </tr>
+            </tfoot>
+
+        </table>
+        <br><br>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d497519.6633296916!2d80.23390715!3d13.04379500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1791794594138!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <br><br><br>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" minlength="2" maxlength="6"
+                required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required><br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="18" max="40" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50" placeholder="Your Message"
+                required></textarea><br><br>
+
+            <label for="options">Choose an option:</label>
+            <select id="options" name="options">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+            <br><br>
+
+            <label for="gender">Gender:</label><br>
+            <input type="checkbox" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="checkbox" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+
+            <label for="options">Choose an option:</label><br>
+            <input type="radio" id="option1" name="options" value="option1">
+            <label for="option1">Option 1</label><br>
+            <input type="radio" id="option2" name="options" value="option2">
+            <label for="option2">Option 2</label><br>
+            <input type="radio" id="option3" name="options" value="option3">
+            <label for="option3">Option 3</label><br><br>
+
+            <label for="date">DOB :</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="file">Upload File:</label>
+            <input type="file" id="file" name="file"><br><br>
+
+
+            <button type="submit" value="Submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+</body>
+</main>
+<style>
+    body {
+        background-color: rgb(249, 220, 240);
+        font-size:medium;
+    }
+</style>
+
+</html>

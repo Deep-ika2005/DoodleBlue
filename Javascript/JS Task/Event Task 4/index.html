@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOM Events Form task</title>
+</head>
+<body>
+
+  <!-- 1. Click Listener Updating Status -->
+  <section>
+    <h2>Status Update</h2>
+    <button id="status-btn">Trigger Update</button>
+    <p id="status-text">Status: Idle</p>
+  </section>
+
+  <!-- 2. Live Character Count -->
+  <section>
+    <h2>Live Character Counter</h2>
+    <label for="char-input">Type a message:</label>
+    <input type="text" id="char-input" placeholder="Start typing..." />
+    <p>Character count: <span id="char-count">0</span></p>
+  </section>
+
+  <!-- 3 & 4. Registration Form with Validation & Feedback -->
+  <section>
+    <h2>Registration</h2>
+    <form id="reg-form" novalidate>
+      <div class="field">
+        <label for="reg-name">Name</label>
+        <input type="text" id="reg-name" />
+      </div>
+
+      <div class="field">
+        <label for="reg-email">Email</label>
+        <input type="email" id="reg-email" />
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p id="form-feedback" aria-live="polite"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
