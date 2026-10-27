@@ -1,0 +1,151 @@
+.event-card {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 275px;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.event-card-image {
+  flex: 0 0 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #3730c9;
+  color: #ffffff;
+  text-align: center;
+}
+
+.event-card-image span {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  overflow-wrap: anywhere;
+}
+
+.event-card-content {
+  flex: 1;
+  min-width: 0;
+  padding: 18px 14px;
+}
+
+.event-category {
+  display: block;
+  margin-bottom: 6px;
+  color: #334155;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.event-card-content h3 {
+  margin: 0 0 10px;
+  color: #1f2937;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.event-description {
+  margin: 0 0 12px;
+  color: #374151;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.event-detail {
+  margin: 0 0 7px;
+  color: #374151;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.event-detail strong {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.event-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.event-card-actions button,
+.remove-event-button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.register-button {
+  background: #4338ca;
+  color: #ffffff;
+}
+
+.register-button:hover {
+  background: #3730a3;
+}
+
+.favorite-button {
+  background: #f3ead8;
+  color: #51452e;
+}
+
+.favorite-button:hover,
+.favorite-button.is-favorite {
+  background: #e9dcc1;
+}
+
+.remove-event-button {
+  display: block;
+  margin-top: 9px;
+  background: #f3dce1;
+  color: #7f4350;
+}
+
+.remove-event-button:hover {
+  background: #eccbd2;
+}
+
+@media (max-width: 900px) and (min-width: 701px) {
+  .event-card {
+    flex-direction: column;
+  }
+
+  .event-card-image {
+    flex: 0 0 auto;
+    min-height: 85px;
+  }
+}
+
+@media (max-width: 450px) {
+  .event-card {
+    min-height: 0;
+  }
+
+  .event-card-image {
+    flex-basis: 90px;
+  }
+
+  .event-card-content {
+    padding: 15px 11px;
+  }
+
+  .event-card-content h3 {
+    font-size: 16px;
+  }
+}
