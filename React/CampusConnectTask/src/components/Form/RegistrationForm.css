@@ -1,0 +1,286 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.registration-page {
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: #f7f8fa;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #182b42;
+}
+
+.registration-card {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 34px 30px;
+  background: #ffffff;
+  border: 1px solid #e4e8ee;
+  border-radius: 10px;
+}
+
+.form-header {
+  margin-bottom: 34px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #6954a5;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.form-header h1 {
+  margin: 0;
+  color: #142c46;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.form-description {
+  margin: 20px 0 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 25px;
+}
+
+.form-group {
+  min-width: 0;
+  margin: 0;
+}
+
+.form-group > label,
+.attendance-group legend {
+  display: block;
+  margin-bottom: 10px;
+  color: #263b52;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group > label span {
+  color: #6954a5;
+}
+
+.form-group input:not([type="radio"]):not([type="checkbox"]),
+.form-group select,
+.form-group textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  color: #263b52;
+  background: #ffffff;
+  border: 1px solid #d6dde6;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #8793a3;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group textarea {
+  min-height: 125px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #7964b5;
+  box-shadow: 0 0 0 3px rgba(105, 84, 165, 0.12);
+}
+
+.form-group input[aria-invalid="true"],
+.form-group select[aria-invalid="true"] {
+  border-color: #d65b5b;
+}
+
+.field-error {
+  margin: 9px 0 0;
+  color: #b54747;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.field-hint {
+  margin: 10px 0 0;
+  color: #68778a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.attendance-group {
+  min-width: 0;
+  padding: 0;
+  border: none;
+}
+
+.attendance-group legend {
+  padding: 0;
+}
+
+.radio-option {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px !important;
+  color: #34465b !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+
+.radio-option input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #6954a5;
+  cursor: pointer;
+}
+
+.event-group {
+  grid-column: 1;
+}
+
+.accessibility-option {
+  margin-top: 28px;
+}
+
+.accessibility-option label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #34465b;
+  font-size: 14px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.accessibility-option input {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0;
+  accent-color: #6954a5;
+  cursor: pointer;
+}
+
+.message-group {
+  margin-top: 28px;
+}
+
+.message-group > label {
+  margin-bottom: 10px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.form-actions button {
+  min-height: 44px;
+  padding: 11px 22px;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.submit-button {
+  color: #ffffff;
+  background: #6954a5;
+}
+
+.submit-button:hover {
+  background: #55418e;
+}
+
+.reset-button {
+  color: #34465b;
+  background: #edf0f5;
+}
+
+.reset-button:hover {
+  background: #dfe4ec;
+}
+
+.success-summary {
+  margin-top: 28px;
+  padding: 22px;
+  background: #f0faf3;
+  border: 1px solid #c8e8d0;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.success-summary h2 {
+  margin: 0 0 18px;
+  color: #237644;
+  font-size: 21px;
+}
+
+.success-summary p {
+  margin: 10px 0;
+  color: #34465b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Mobile responsive layout */
+@media (max-width: 650px) {
+  .registration-page {
+    padding: 20px 12px;
+  }
+
+  .registration-card {
+    padding: 24px 18px;
+  }
+
+  .form-header h1 {
+    font-size: 25px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    row-gap: 22px;
+  }
+
+  .event-group {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EventCard from "../EventCard/EventCard";
+import Navbar from "../Navbar/Navbar";
 import "./EventList.css";
 
 function EventList() {
@@ -51,15 +52,7 @@ function EventList() {
 
   return (
     <div className="campus-connect">
-      <nav className="navbar">
-        <div className="navbar-logo">CampusConnect</div>
-
-        <div className="navbar-links">
-          <a href="#home">Home</a>
-          <a href="#events">Events</a>
-          <a href="#about">About</a>
-        </div>
-      </nav>
+      <Navbar />
 
       <main>
         <section className="hero" id="home">
@@ -124,29 +117,10 @@ function EventList() {
           </div>
         </section>
 
-        <section className="about-section" id="about">
-          <h2>About CampusConnect</h2>
-
-          <p>
-            Discover campus events, connect with fellow students, and
-            participate in your college community.
-          </p>
-        </section>
+       
       </main>
 
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div className="footer-info">
-            <div className="footer-brand">CampusConnect</div>
-
-            <p className="footer-copy">
-              © 2026 CampusConnect. All rights reserved.
-            </p>
-          </div>
-
-       
-        </div>
-      </footer>
+     
     </div>
   );
 }
