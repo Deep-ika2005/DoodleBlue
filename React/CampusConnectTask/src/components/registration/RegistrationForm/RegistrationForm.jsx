@@ -1,8 +1,26 @@
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./RegistrationForm.css";
 
 function RegistrationForm() {
+  const location = useLocation();
+  const studentNameRef = useRef(null);
+  const [highlightStudentName, setHighlightStudentName] = useState(false);
+
+  useEffect(() => {
+    if (!location.state?.focusStudentName) return;
+
+    studentNameRef.current?.focus();
+    setHighlightStudentName(true);
+
+    const highlightTimer = window.setTimeout(() => {
+      setHighlightStudentName(false);
+    }, 1600);
+
+    return () => window.clearTimeout(highlightTimer);
+  }, [location.key, location.state]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -117,6 +135,8 @@ function RegistrationForm() {
 
               <input
                 id="name"
+                ref={studentNameRef}
+                className={highlightStudentName ? "name-input-highlight" : ""}
                 name="name"
                 type="text"
                 placeholder="Enter your full name"

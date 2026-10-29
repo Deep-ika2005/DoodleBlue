@@ -112,6 +112,22 @@
   box-shadow: 0 0 0 3px rgba(105, 84, 165, 0.12);
 }
 
+.form-group input.name-input-highlight {
+  animation: student-name-highlight 1.6s ease-out;
+}
+
+@keyframes student-name-highlight {
+  0%, 45% {
+    border-color: #5865dc;
+    background-color: #eef2ff;
+    box-shadow: 0 0 0 5px rgba(88, 101, 220, 0.2);
+  }
+  100% {
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(105, 84, 165, 0.12);
+  }
+}
+
 .form-group input[aria-invalid="true"],
 .form-group select[aria-invalid="true"] {
   border-color: #d65b5b;

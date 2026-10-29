@@ -1,0 +1,92 @@
+.search-events {
+  width: min(100%, 560px);
+  margin: 0 0 24px;
+}
+
+.search-events-label {
+  display: block;
+  margin: 0 0 9px;
+  color: #334e80;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.search-events-control {
+  min-height: 52px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid #d9e2f0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 18px #233f7610;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.search-events-control:focus-within {
+  border-color: #5865dc;
+  box-shadow: 0 0 0 4px #5865dc1c;
+}
+
+.search-events-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: #7183a2;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.search-events-control input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1f2937;
+  font: inherit;
+  font-size: 14px;
+}
+
+.search-events-control input::placeholder { color: #94a3b8; }
+
+.search-events-clear {
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f5fc7;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.search-events-clear svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.search-events-clear:hover { background: #e0e7ff; }
+
+.search-events-hint {
+  display: block;
+  margin: 7px 0 0 2px;
+  color: #8492a8;
+  font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  .search-events-control { min-height: 48px; padding: 0 11px; }
+  .search-events-control input { font-size: 13px; }
+}
