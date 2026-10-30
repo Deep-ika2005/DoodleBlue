@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./RegistrationForm.css";
+import { Button } from "../../ui";
 
 function RegistrationForm() {
   const location = useLocation();
@@ -341,17 +342,18 @@ function RegistrationForm() {
 
           {/* Buttons */}
           <div className="form-actions">
-            <button type="submit" className="submit-button">
+            <Button type="submit" className="submit-button">
               Register for Event
-            </button>
+            </Button>
 
-            <button
+            <Button
               type="button"
+              variant="secondary"
               className="reset-button"
               onClick={handleReset}
             >
               Reset
-            </button>
+            </Button>
           </div>
         </form>
 

@@ -6,17 +6,16 @@ function Footer() {
       <div className="footer-inner">
         <div className="footer-about">
           <div className="footer-brand">CampusConnect</div>
-          <p>Discover events, meet people, and make campus life memorable.</p>
+          <p>Your campus, your community.</p>
         </div>
 
-
-        <div className="footer-contact">
-          <p>Email: campusconnect@example.com</p>
-          <p>Campus Student Activities</p>
+        <div className="footer-meta">
+          <span className="footer-contact-label">Get in touch</span>
+          <a href="mailto:campusconnect@example.com">campusconnect@example.com</a>
         </div>
 
         <p className="footer-copy">
-          &copy; 2026 CampusConnect. All rights reserved.
+          &copy; 2026 CampusConnect
         </p>
       </div>
     </footer>

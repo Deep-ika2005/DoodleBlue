@@ -9,10 +9,22 @@
   border-bottom: 1px solid #f1f2f5;
 }
 
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-brand img {
+  width: 36px;
+  height: 36px;
+}
+
 .navbar-logo {
   color: #213e76;
   font-size: 16px;
   font-weight: 700;
+  letter-spacing: -0.3px;
 }
 
 .navbar-links {
@@ -32,6 +44,55 @@
   color: #261d86;
 }
 
+.navbar-links .navbar-favorites {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid #dce3ff;
+  border-radius: 999px;
+  background: #f4f6ff;
+  color: #5148c8;
+  font-weight: 600;
+}
+
+.navbar-favorites img,
+.navbar-register img {
+  width: 16px;
+  height: 16px;
+}
+
+.navbar-links .navbar-register {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  background: #6259c7;
+  color: #fff;
+  font-weight: 600;
+}
+
+.navbar-links .navbar-register:hover {
+  background: #5047b3;
+  color: #fff;
+}
+
+.navbar-register img {
+  filter: brightness(0) invert(1);
+}
+
+.navbar-favorites span {
+  min-width: 18px;
+  height: 18px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #5148c8;
+  color: #fff;
+  font-size: 10px;
+}
+
 
 @media (max-width: 700px) {
   .navbar {
@@ -41,6 +102,15 @@
 
   .navbar-logo {
     font-size: 14px;
+  }
+
+  .navbar-brand {
+    gap: 7px;
+  }
+
+  .navbar-brand img {
+    width: 32px;
+    height: 32px;
   }
 
   .navbar-links {

@@ -1,7 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import heartOutline from "../../../assets/heart-outline.svg";
+import heartFilled from "../../../assets/heart-filled.svg";
+import registerIcon from "../../../assets/register.svg";
 import "./EventCard.css";
+import { Badge } from "../../ui";
 
 function EventCard({
+  id,
   title = "Campus Event",
   category = "GENERAL",
   description = "Join us for an exciting campus event.",
@@ -9,13 +15,15 @@ function EventCard({
   venue = "Campus",
   initialRegistrationCount = 0,
   initiallyRegistered = false,
+  isFavorite = false,
+  onToggleFavorite,
   onRemove,
+  onEdit,
 }) {
   const [isRegistered, setIsRegistered] = useState(initiallyRegistered);
   const [registrationCount, setRegistrationCount] = useState(
     initialRegistrationCount
   );
-  const [isFavorite, setIsFavorite] = useState(false);
 
   function handleRegistration() {
     if (isRegistered) {
@@ -27,10 +35,6 @@ function EventCard({
     }
   }
 
-  function handleFavorite() {
-    setIsFavorite((favorite) => !favorite);
-  }
-
   return (
     <article className="event-card">
       <div className="event-card-image">
@@ -38,7 +42,7 @@ function EventCard({
       </div>
 
       <div className="event-card-content">
-        <span className="event-category">{category}</span>
+        <Badge className="event-category" tone="brand">{category}</Badge>
 
         <h3>{title}</h3>
 
@@ -62,6 +66,7 @@ function EventCard({
             className="register-button"
             onClick={handleRegistration}
           >
+            <img src={registerIcon} alt="" />
             {isRegistered ? "Cancel Registration" : "Register"}
           </button>
 
@@ -70,19 +75,16 @@ function EventCard({
             className={`favorite-button ${
               isFavorite ? "is-favorite" : ""
             }`}
-            onClick={handleFavorite}
+            onClick={onToggleFavorite}
+            aria-pressed={isFavorite}
           >
-            {isFavorite ? "Remove Favorite" : "Add Favorite"}
+            <img src={isFavorite ? heartFilled : heartOutline} alt="" />
+            {isFavorite ? "Favorited" : "Add Favorite"}
           </button>
+          <Link className="details-button" to={`/events/${id}`}>View Details</Link>
+          <button type="button" className="edit-event-button" onClick={onEdit}>Edit Event</button>
+          <button type="button" className="remove-event-button" onClick={onRemove}>Delete Event</button>
         </div>
-
-        <button
-          type="button"
-          className="remove-event-button"
-          onClick={onRemove}
-        >
-          Remove Event
-        </button>
       </div>
     </article>
   );

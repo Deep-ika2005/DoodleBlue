@@ -1,0 +1,5 @@
+.ui-empty-state { padding: 38px 24px; border: 1px dashed #d8dfec; border-radius: 16px; background: #fafbff; text-align: center; }
+.ui-empty-state__icon { display: grid; width: 46px; height: 46px; margin: 0 auto 14px; place-items: center; border-radius: 14px; background: #eef2ff; color: #5865dc; font-size: 22px; }
+.ui-empty-state__eyebrow { margin: 0 0 9px; color: #5865dc; font-size: 10px; font-weight: 800; letter-spacing: 1.2px; }
+.ui-empty-state__title { margin: 0; color: #26354b; font-size: 18px; line-height: 1.4; }
+.ui-empty-state__description { max-width: 480px; margin: 9px auto 0; color: #748096; font-size: 13px; line-height: 1.6; }

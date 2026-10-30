@@ -6,6 +6,8 @@ import EventsPage from "./pages/EventsPage/EventsPage";
 import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import EventDetailsPage from "./pages/EventsPage/EventDetailsPage";
+import FavoritesPage from "./pages/EventsPage/FavoritesPage";
 
 function App() {
   const { pathname } = useLocation();
@@ -20,6 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:eventId" element={<EventDetailsPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

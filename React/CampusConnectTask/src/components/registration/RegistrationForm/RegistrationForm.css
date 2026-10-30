@@ -217,36 +217,6 @@
   margin-top: 25px;
 }
 
-.form-actions button {
-  min-height: 44px;
-  padding: 11px 22px;
-  border: none;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.submit-button {
-  color: #ffffff;
-  background: #6954a5;
-}
-
-.submit-button:hover {
-  background: #55418e;
-}
-
-.reset-button {
-  color: #34465b;
-  background: #edf0f5;
-}
-
-.reset-button:hover {
-  background: #dfe4ec;
-}
-
 .success-summary {
   margin-top: 28px;
   padding: 22px;
@@ -296,7 +266,7 @@
     flex-direction: column;
   }
 
-  .form-actions button {
+  .form-actions .ui-button {
     width: 100%;
   }
 }

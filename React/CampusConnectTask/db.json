@@ -1,32 +1,12 @@
 {
   "events": [
     {
-      "id": 1,
-      "title": "Campus Tech Fest 2026",
-      "category": "TECH",
-      "description": "Explore technology, discover new ideas, and connect with fellow students.",
-      "date": "November 5, 2026",
-      "venue": "Main Auditorium",
-      "initialRegistrationCount": 0,
-      "initiallyRegistered": false
-    },
-    {
       "id": 2,
       "title": "Cultural Day",
       "category": "CULTURE",
       "description": "Celebrate music, dance, art, and cultures from across campus.",
       "date": "November 12, 2026",
       "venue": "College Campus",
-      "initialRegistrationCount": 0,
-      "initiallyRegistered": false
-    },
-    {
-      "id": 3,
-      "title": "Campus Sports Meet",
-      "category": "SPORTS",
-      "description": "Take part in friendly competitions and cheer on your campus teams.",
-      "date": "November 18, 2026",
-      "venue": "College Sports Ground",
       "initialRegistrationCount": 0,
       "initiallyRegistered": false
     },
@@ -39,6 +19,16 @@
       "venue": "Seminar Hall",
       "initialRegistrationCount": 0,
       "initiallyRegistered": false
+    },
+    {
+      "title": "workshop",
+      "category": "TECH",
+      "date": "2026-10-31",
+      "venue": "Main Auditorium",
+      "description": "Descripttion the event. ",
+      "initialRegistrationCount": 0,
+      "initiallyRegistered": false,
+      "id": 5
     }
   ]
 }

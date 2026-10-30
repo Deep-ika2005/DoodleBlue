@@ -80,9 +80,11 @@
 }
 
 .event-card-actions button,
-.remove-event-button {
+.event-card-actions a {
+  display: inline-flex;
+  align-items: center;
   padding: 8px 10px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 5px;
   font-family: inherit;
   font-size: 10px;
@@ -91,9 +93,19 @@
   transition: background-color 0.2s ease;
 }
 
+.event-card-actions button img {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
 .register-button {
   background: #4338ca;
   color: #ffffff;
+}
+
+.register-button img {
+  filter: brightness(0) invert(1);
 }
 
 .register-button:hover {
@@ -107,12 +119,25 @@
 
 .favorite-button:hover,
 .favorite-button.is-favorite {
-  background: #e9dcc1;
+  background: #ffe7ed;
+  color: #bd3158;
 }
 
+.details-button {
+  background: #172033;
+  color: #fff;
+}
+
+.details-button:hover { background: #334155; }
+
+.edit-event-button {
+  background: #e8efff;
+  color: #334eaa;
+}
+
+.edit-event-button:hover { background: #d9e4ff; }
+
 .remove-event-button {
-  display: block;
-  margin-top: 9px;
   background: #f3dce1;
   color: #7f4350;
 }
