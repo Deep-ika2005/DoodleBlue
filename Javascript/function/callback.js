@@ -1,8 +1,8 @@
 //callback(oru fn na pass pannum)
-function process(name,callback){
+function f1(name,callback){
     callback(name);
 }
-function vite(name){
+function f2(name){
     console.log("Hello, My Best friend "+ name +"!!!!!!")
 }
-process("Harini",vite);
+f1("Harini",f2);

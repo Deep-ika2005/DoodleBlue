@@ -53,7 +53,7 @@
   place-items: center;
   border: 5px solid #f8faff;
   border-radius: 50%;
-  background: #4f65d8;
+  background: var(--color-primary);
   color: #fff;
   font-size: 21px;
   box-shadow: 0 8px 20px #4f65d83d;
@@ -61,7 +61,7 @@
 
 .not-found-eyebrow {
   margin: 0 0 12px;
-  color: #4f65d8;
+  color: var(--color-primary);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -99,7 +99,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background: #4f65d8;
+  background: var(--color-primary);
   color: white;
   font-size: 14px;
   font-weight: 700;
@@ -107,10 +107,10 @@
   transition: background .2s ease, transform .2s ease;
 }
 
-.not-found-home-button:hover { transform: translateY(-2px); background: #3f54c1; }
+.not-found-home-button:hover { transform: translateY(-2px); background: var(--color-primary-hover); }
 .not-found-events-link { color: #334e80; font-size: 14px; font-weight: 700; }
-.not-found-events-link span { margin-left: 5px; color: #4f65d8; }
-.not-found-events-link:hover { color: #4f65d8; }
+.not-found-events-link span { margin-left: 5px; color: var(--color-primary); }
+.not-found-events-link:hover { color: var(--color-primary); }
 
 @media (max-width: 480px) {
   .not-found-page { min-height: calc(100vh - 124px); padding: 38px 18px; }

@@ -1,4 +1,5 @@
 const API_URL = "http://localhost:3000/events";
+const REGISTRATIONS_API_URL = "http://localhost:3000/registrations";
 
 export async function getEvents() {
     const response = await fetch(API_URL);
@@ -37,4 +38,16 @@ export async function deleteEvent(id) {
     if (!response.ok) {
         throw new Error(`Failed to delete event (${response.status})`);
     }
+}
+
+export async function createRegistration(registration) {
+    const response = await fetch(REGISTRATIONS_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registration),
+    });
+    if (!response.ok) {
+        throw new Error(`Failed to create registration (${response.status})`);
+    }
+    return response.json();
 }

@@ -40,7 +40,7 @@
 
 .hero-eyebrow {
   margin: 0 0 18px;
-  color: #6259bb;
+  color: var(--color-primary);
   font-size: 11px;
   font-weight: 750;
   letter-spacing: 1.65px;
@@ -48,7 +48,7 @@
 
 .hero-eyebrow span {
   margin-right: 5px;
-  color: #e89a62;
+  color: var(--color-primary);
 }
 
 .hero h1 {
@@ -61,7 +61,7 @@
 }
 
 .hero h1 span {
-  color: #6259c7;
+  color: var(--color-primary);
 }
 
 .hero-description {
@@ -84,9 +84,9 @@
   align-items: center;
   gap: 12px;
   padding: 13px 19px;
-  border: 1px solid #6259c7;
+  border: 1px solid var(--color-primary);
   border-radius: 8px;
-  background: #6259c7;
+  background: var(--color-primary);
   box-shadow: 0 8px 18px rgba(98, 89, 199, 0.2);
   color: #fff;
   font-size: 14px;
@@ -96,7 +96,7 @@
 
 .explore-button:hover {
   transform: translateY(-2px);
-  background: #5047b3;
+  background: var(--color-primary-hover);
 }
 
 .explore-button span {

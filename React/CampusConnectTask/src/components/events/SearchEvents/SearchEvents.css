@@ -34,8 +34,8 @@
 }
 
 .search-events-control:focus-within {
-  border-color: #5865dc;
-  box-shadow: 0 0 0 4px #5865dc1c;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-ring);
 }
 
 .search-events-icon {
@@ -70,8 +70,8 @@
   place-items: center;
   border: 0;
   border-radius: 50%;
-  background: #eef2ff;
-  color: #4f5fc7;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-hover);
   font: inherit;
   font-size: 12px;
   font-weight: 700;
@@ -115,8 +115,8 @@
 }
 
 .event-category-filter:focus {
-  border-color: #5865dc;
-  box-shadow: 0 0 0 4px #5865dc1c;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-ring);
 }
 
 .search-events-reset {
@@ -125,7 +125,7 @@
   border: 1px solid #d9e2f0;
   border-radius: 10px;
   background: #f8faff;
-  color: #4f5fc7;
+  color: var(--color-primary-hover);
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
@@ -133,8 +133,8 @@
 }
 
 .search-events-reset:hover {
-  border-color: #c7d2fe;
-  background: #eef2ff;
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-soft);
 }
 
 @media (max-width: 480px) {

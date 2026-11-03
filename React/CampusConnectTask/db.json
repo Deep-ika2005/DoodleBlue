@@ -1,6 +1,16 @@
 {
   "events": [
     {
+      "id": 1,
+      "title": "Student Innovation Fair",
+      "category": "TECH",
+      "description": "Explore creative student projects, meet campus innovators, and discover new ideas across technology and design.",
+      "date": "December 4, 2026",
+      "venue": "Innovation Center",
+      "initialRegistrationCount": 0,
+      "initiallyRegistered": false
+    },
+    {
       "id": 2,
       "title": "Cultural Day",
       "category": "CULTURE",
@@ -29,6 +39,34 @@
       "initialRegistrationCount": 0,
       "initiallyRegistered": false,
       "id": 5
+    }
+  ],
+  "registrations": [
+    {
+      "studentName": "Deepika B",
+      "email": "deepikabakthavachalam11@gmail.com",
+      "department": "Cyber Security",
+      "year": 5,
+      "attendance": "In person",
+      "eventId": 4,
+      "eventTitle": "Career Development Workshop",
+      "accessibility": true,
+      "message": "",
+      "submittedAt": "2026-11-03T06:03:26.271Z",
+      "id": 1
+    },
+    {
+      "studentName": "Hemanth D",
+      "email": "hkdp@gmail.com",
+      "department": "Cyber Security",
+      "year": 6,
+      "attendance": "In person",
+      "eventId": 2,
+      "eventTitle": "Cultural Day",
+      "accessibility": true,
+      "message": "",
+      "submittedAt": "2026-11-03T06:14:16.157Z",
+      "id": 2
     }
   ]
 }

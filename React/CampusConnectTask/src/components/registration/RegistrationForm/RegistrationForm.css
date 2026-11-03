@@ -27,7 +27,7 @@
 
 .eyebrow {
   margin: 0 0 10px;
-  color: #6954a5;
+  color: var(--color-primary);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -46,6 +46,23 @@
   color: #64748b;
   font-size: 15px;
   line-height: 1.6;
+}
+
+.required-note {
+  width: fit-content;
+  margin: 14px 0 0;
+  padding: 6px 10px;
+  border-left: 3px solid #d64545;
+  border-radius: 4px;
+  background: #fff5f5;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.required-note span,
+.required-marker {
+  color: #d64545;
+  font-weight: 800;
 }
 
 .form-grid {
@@ -67,10 +84,6 @@
   color: #263b52;
   font-size: 14px;
   font-weight: 600;
-}
-
-.form-group > label span {
-  color: #6954a5;
 }
 
 .form-group input:not([type="radio"]):not([type="checkbox"]),
@@ -108,8 +121,8 @@
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #7964b5;
-  box-shadow: 0 0 0 3px rgba(105, 84, 165, 0.12);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
 }
 
 .form-group input.name-input-highlight {
@@ -118,13 +131,13 @@
 
 @keyframes student-name-highlight {
   0%, 45% {
-    border-color: #5865dc;
-    background-color: #eef2ff;
-    box-shadow: 0 0 0 5px rgba(88, 101, 220, 0.2);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+    box-shadow: 0 0 0 5px var(--color-primary-ring);
   }
   100% {
     background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(105, 84, 165, 0.12);
+    box-shadow: 0 0 0 3px var(--color-primary-ring);
   }
 }
 
@@ -172,7 +185,7 @@
   width: 16px;
   height: 16px;
   margin: 0;
-  accent-color: #6954a5;
+  accent-color: var(--color-primary);
   cursor: pointer;
 }
 
@@ -199,7 +212,7 @@
   width: 16px;
   height: 16px;
   margin: 3px 0 0;
-  accent-color: #6954a5;
+  accent-color: var(--color-primary);
   cursor: pointer;
 }
 

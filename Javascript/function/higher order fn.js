@@ -1,11 +1,11 @@
 
 //higher order fn(receving fn)
-function pro(name) {
+function f1(name) {
   console.log("Hello, My Best friend " + name + "!!!!!!");
 }
 
-function invite(name, callback) {
+function f2(name, callback) {
   callback(name);
 }
 
-invite("Harini", pro);
+f2("Harini", f1);

@@ -1,13 +1,35 @@
-
+﻿
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./RegistrationForm.css";
-import { Button } from "../../ui";
+import { Button, Input, Select, Textarea } from "../../common";
+import { createRegistration, getEvents } from "../../../services/events";
 
 function RegistrationForm() {
   const location = useLocation();
   const studentNameRef = useRef(null);
   const [highlightStudentName, setHighlightStudentName] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [eventsLoading, setEventsLoading] = useState(true);
+  const [eventsLoadError, setEventsLoadError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  useEffect(() => {
+    let active = true;
+    getEvents()
+      .then((eventData) => {
+        if (active) setEvents(eventData);
+      })
+      .catch(() => {
+        if (active) setEventsLoadError("Could not load events. Make sure the events API is running.");
+      })
+      .finally(() => {
+        if (active) setEventsLoading(false);
+      });
+
+    return () => { active = false; };
+  }, []);
 
   useEffect(() => {
     if (!location.state?.focusStudentName) return;
@@ -53,7 +75,7 @@ function RegistrationForm() {
     setSubmitted(false);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const newErrors = {};
@@ -79,19 +101,42 @@ function RegistrationForm() {
       Number(formData.year) < 1 ||
       Number(formData.year) > 6
     ) {
-      newErrors.year = "Please enter a valid year of study (1–6).";
+      newErrors.year = "Please enter a valid year of study (1â€“6).";
     }
 
-    if (!formData.event) {
+    if (!formData.event || !events.some((event) => String(event.id) === formData.event)) {
       newErrors.event = "Please select an event.";
     }
 
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
-      setSubmitted(true);
-    } else {
+    if (Object.keys(newErrors).length > 0) {
       setSubmitted(false);
+      return;
+    }
+
+    const selectedEvent = events.find((event) => String(event.id) === formData.event);
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      await createRegistration({
+        studentName: formData.name.trim(),
+        email: formData.email.trim(),
+        department: formData.department,
+        year: Number(formData.year),
+        attendance: formData.attendance,
+        eventId: selectedEvent.id,
+        eventTitle: selectedEvent.title,
+        accessibility: formData.accessibility,
+        message: formData.message.trim(),
+        submittedAt: new Date().toISOString(),
+      });
+      setSubmitted(true);
+    } catch {
+      setSubmitted(false);
+      setSubmitError("Could not submit your registration. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -110,6 +155,7 @@ function RegistrationForm() {
 
     setErrors({});
     setSubmitted(false);
+    setSubmitError("");
   }
 
   return (
@@ -123,6 +169,7 @@ function RegistrationForm() {
           <p className="form-description">
             Complete the required fields to register for a campus event.
           </p>
+          <p className="required-note"><span aria-hidden="true">*</span> Required fields</p>
         </header>
 
         <form onSubmit={handleSubmit} noValidate>
@@ -131,15 +178,16 @@ function RegistrationForm() {
             {/* Student Name */}
             <div className="form-group">
               <label htmlFor="name">
-                Student name <span>*</span>
+                Student name <span className="required-marker" aria-hidden="true">*</span>
               </label>
 
-              <input
+              <Input
                 id="name"
                 ref={studentNameRef}
                 className={highlightStudentName ? "name-input-highlight" : ""}
                 name="name"
                 type="text"
+                required
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={handleChange}
@@ -154,13 +202,14 @@ function RegistrationForm() {
             {/* Email */}
             <div className="form-group">
               <label htmlFor="email">
-                Email address <span>*</span>
+                Email address <span className="required-marker" aria-hidden="true">*</span>
               </label>
 
-              <input
+              <Input
                 id="email"
                 name="email"
                 type="email"
+                required
                 placeholder="student@example.com"
                 value={formData.email}
                 onChange={handleChange}
@@ -175,12 +224,13 @@ function RegistrationForm() {
             {/* Department */}
             <div className="form-group">
               <label htmlFor="department">
-                Department <span>*</span>
+                Department <span className="required-marker" aria-hidden="true">*</span>
               </label>
 
-              <select
+              <Select
                 id="department"
                 name="department"
+                required
                 value={formData.department}
                 onChange={handleChange}
                 aria-invalid={!!errors.department}
@@ -201,7 +251,7 @@ function RegistrationForm() {
                   Mechanical Engineering
                 </option>
                 <option value="Civil Engineering">Civil Engineering</option>
-              </select>
+              </Select>
 
               {errors.department && (
                 <p className="field-error">{errors.department}</p>
@@ -210,12 +260,15 @@ function RegistrationForm() {
 
             {/* Year of Study */}
             <div className="form-group">
-              <label htmlFor="year">Year of study</label>
+              <label htmlFor="year">
+                Year of study <span className="required-marker" aria-hidden="true">*</span>
+              </label>
 
-              <input
+              <Input
                 id="year"
                 name="year"
                 type="number"
+                required
                 min="1"
                 max="6"
                 placeholder="Example: 2"
@@ -235,7 +288,7 @@ function RegistrationForm() {
                 Create a demo password (optional)
               </label>
 
-              <input
+              <Input
                 id="password"
                 name="password"
                 type="password"
@@ -254,7 +307,7 @@ function RegistrationForm() {
               <legend>How will you attend?</legend>
 
               <label className="radio-option">
-                <input
+                <Input
                   type="radio"
                   name="attendance"
                   value="In person"
@@ -265,7 +318,7 @@ function RegistrationForm() {
               </label>
 
               <label className="radio-option">
-                <input
+                <Input
                   type="radio"
                   name="attendance"
                   value="Online"
@@ -279,29 +332,32 @@ function RegistrationForm() {
             {/* Event Selection */}
             <div className="form-group event-group">
               <label htmlFor="event">
-                Choose an event <span>*</span>
+                Choose an event <span className="required-marker" aria-hidden="true">*</span>
               </label>
 
-              <select
+              <Select
                 id="event"
                 name="event"
+                required
                 value={formData.event}
                 onChange={handleChange}
                 aria-invalid={!!errors.event}
+                disabled={eventsLoading || events.length === 0}
               >
-                <option value="">Select a campus event</option>
-                <option value="Technical Workshop">
-                  Technical Workshop
+                <option value="">
+                  {eventsLoading ? "Loading campus events..." : "Select a campus event"}
                 </option>
-                <option value="Hackathon">Hackathon</option>
-                <option value="Paper Presentation">
-                  Paper Presentation
-                </option>
-                <option value="Technical Quiz">Technical Quiz</option>
-                <option value="Cyber Security Seminar">
-                  Cyber Security Seminar
-                </option>
-              </select>
+                {events.map((event) => (
+                  <option key={event.id} value={String(event.id)}>
+                    {event.title}
+                  </option>
+                ))}
+              </Select>
+
+              {eventsLoadError && <p className="field-error" role="alert">{eventsLoadError}</p>}
+              {!eventsLoading && !eventsLoadError && events.length === 0 && (
+                <p className="field-error">No events are currently available.</p>
+              )}
 
               {errors.event && (
                 <p className="field-error">{errors.event}</p>
@@ -313,7 +369,7 @@ function RegistrationForm() {
           {/* Accessibility Checkbox */}
           <div className="accessibility-option">
             <label>
-              <input
+              <Input
                 type="checkbox"
                 name="accessibility"
                 checked={formData.accessibility}
@@ -330,7 +386,7 @@ function RegistrationForm() {
           <div className="form-group message-group">
             <label htmlFor="message">Message (optional)</label>
 
-            <textarea
+            <Textarea
               id="message"
               name="message"
               rows="4"
@@ -342,8 +398,8 @@ function RegistrationForm() {
 
           {/* Buttons */}
           <div className="form-actions">
-            <Button type="submit" className="submit-button">
-              Register for Event
+            <Button type="submit" className="submit-button" disabled={submitting || eventsLoading || events.length === 0}>
+              {submitting ? "Submitting..." : "Register for Event"}
             </Button>
 
             <Button
@@ -355,6 +411,7 @@ function RegistrationForm() {
               Reset
             </Button>
           </div>
+          {submitError && <p className="field-error" role="alert">{submitError}</p>}
         </form>
 
         {/* Success Summary */}
@@ -367,7 +424,7 @@ function RegistrationForm() {
             <p><strong>Department:</strong> {formData.department}</p>
             <p><strong>Year of study:</strong> {formData.year}</p>
             <p><strong>Attendance:</strong> {formData.attendance}</p>
-            <p><strong>Event:</strong> {formData.event}</p>
+            <p><strong>Event:</strong> {events.find((event) => String(event.id) === formData.event)?.title}</p>
 
             {formData.accessibility && (
               <p>Accessibility support requested.</p>
@@ -384,3 +441,4 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
+

@@ -4,6 +4,7 @@ import SearchEvents from "../SearchEvents/SearchEvents";
 import "./EventList.css";
 import { createEvent, deleteEvent, getEvents, updateEvent } from "../../../services/events";
 import { useFavorites } from "../../../contexts/FavoritesContext";
+import { Input, Select, Textarea } from "../../common";
 
 function toDateInputValue(value) {
   if (!value) return "";
@@ -23,6 +24,8 @@ const [events, setEvents] = useState([]);
   const [error, setError] = useState("");
   const [editingEvent, setEditingEvent] = useState(null);
   const [creatingEvent, setCreatingEvent] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState(null);
+  const [addEventErrors, setAddEventErrors] = useState({});
   const addEventFormRef = useRef(null);
   const { favoriteIds, toggleFavorite, removeFavorite } = useFavorites();
 
@@ -78,6 +81,15 @@ const [events, setEvents] = useState([]);
     formEvent.preventDefault();
     const form = formEvent.currentTarget;
     const formData = new FormData(form);
+    const validationErrors = {};
+    ["title", "category", "date", "venue", "description"].forEach((field) => {
+      if (!String(formData.get(field) ?? "").trim()) {
+        validationErrors[field] = "This field is required.";
+      }
+    });
+    setAddEventErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
+
     const newEvent = {
       ...Object.fromEntries(formData.entries()),
       initialRegistrationCount: 0,
@@ -113,6 +125,7 @@ const [events, setEvents] = useState([]);
       await deleteEvent(id);
       setEvents((currentEvents) => currentEvents.filter((event) => String(event.id) !== String(id)));
       removeFavorite(id);
+      setEventToDelete(null);
       setError("");
     } catch {
       setError("Could not delete this event. Please try again.");
@@ -143,6 +156,7 @@ const [events, setEvents] = useState([]);
               className={`add-event-card ${editingEvent ? "is-editing-event" : ""}`}
               onSubmit={handleAddEvent}
               ref={addEventFormRef}
+              noValidate
               key={editingEvent?.id ?? "new-event"}
             >
               <div className="add-event-heading">
@@ -155,37 +169,42 @@ const [events, setEvents] = useState([]);
               <div className="add-event-fields">
                 <label>
                   <span className="add-event-label">Event title <b>*</b></span>
-                  <input name="title" type="text" defaultValue={editingEvent?.title ?? ""} placeholder="e.g. React Workshop" required />
+                  <Input name="title" type="text" defaultValue={editingEvent?.title ?? ""} placeholder="e.g. React Workshop" required aria-invalid={!!addEventErrors.title} onChange={() => setAddEventErrors((current) => ({ ...current, title: "" }))} />
+                  {addEventErrors.title && <span className="add-event-field-error">{addEventErrors.title}</span>}
                 </label>
                 <label>
                   <span className="add-event-label">Category <b>*</b></span>
-                  <select name="category" defaultValue={editingEvent?.category ?? "TECH"} required>
+                  <Select name="category" defaultValue={editingEvent?.category ?? "TECH"} required aria-invalid={!!addEventErrors.category} onChange={() => setAddEventErrors((current) => ({ ...current, category: "" }))}>
                     <option value="TECH">Technology</option>
                     <option value="CULTURE">Culture</option>
                     <option value="SPORTS">Sports</option>
                     <option value="CAREER">Career</option>
                     <option value="DESIGN">Design</option>
                     <option value="OTHERS">Other</option>
-                  </select>
+                  </Select>
+                  {addEventErrors.category && <span className="add-event-field-error">{addEventErrors.category}</span>}
                 </label>
                 <label>
                   <span className="add-event-label">Date <b>*</b></span>
-                  <input name="date" type="date" defaultValue={toDateInputValue(editingEvent?.date)} required />
+                  <Input name="date" type="date" defaultValue={toDateInputValue(editingEvent?.date)} required aria-invalid={!!addEventErrors.date} onChange={() => setAddEventErrors((current) => ({ ...current, date: "" }))} />
+                  {addEventErrors.date && <span className="add-event-field-error">{addEventErrors.date}</span>}
                 </label>
                 <label>
                   <span className="add-event-label">Venue <b>*</b></span>
-                  <input name="venue" type="text" defaultValue={editingEvent?.venue ?? ""} placeholder="e.g. Seminar Hall" required />
+                  <Input name="venue" type="text" defaultValue={editingEvent?.venue ?? ""} placeholder="e.g. Seminar Hall" required aria-invalid={!!addEventErrors.venue} onChange={() => setAddEventErrors((current) => ({ ...current, venue: "" }))} />
+                  {addEventErrors.venue && <span className="add-event-field-error">{addEventErrors.venue}</span>}
                 </label>
                 <label className="add-event-description">
                   <span className="add-event-label">Description <b>*</b></span>
-                  <textarea name="description" rows="3" defaultValue={editingEvent?.description ?? ""} placeholder="Describe the event and what attendees can expect" required />
+                  <Textarea name="description" rows="3" defaultValue={editingEvent?.description ?? ""} placeholder="Describe the event and what attendees can expect" required aria-invalid={!!addEventErrors.description} onChange={() => setAddEventErrors((current) => ({ ...current, description: "" }))} />
+                  {addEventErrors.description && <span className="add-event-field-error">{addEventErrors.description}</span>}
                 </label>
               </div>
               <div className="add-event-footer">
-                <span>All fields are required</span>
+                <span>Fields marked * are required</span>
                 <div className="add-event-actions">
                   {editingEvent && (
-                    <button className="add-event-cancel" type="button" onClick={() => setEditingEvent(null)}>
+                    <button className="add-event-cancel" type="button" onClick={() => { setEditingEvent(null); setAddEventErrors({}); }}>
                       Cancel
                     </button>
                   )}
@@ -221,11 +240,10 @@ const [events, setEvents] = useState([]);
                 initialRegistrationCount={
                   event.initialRegistrationCount
                 }
-                initiallyRegistered={event.initiallyRegistered}
                 isFavorite={favoriteIds.includes(String(event.id))}
                 onToggleFavorite={() => toggleFavorite(event.id)}
-                onEdit={() => setEditingEvent(event)}
-                onRemove={() => handleRemoveEvent(event.id)}
+                onEdit={() => { setAddEventErrors({}); setEditingEvent(event); }}
+                onRemove={() => setEventToDelete(event)}
               />
             ))}
           </div>
@@ -251,6 +269,39 @@ const [events, setEvents] = useState([]);
                     ? "Tap Add Favorite on any event and it will appear in this collection."
                     : "Try another event name or venue, or reset your filters to see everything."}
               </p>
+            </div>
+          )}
+
+          {eventToDelete && (
+            <div
+              className="event-edit-backdrop"
+              onClick={() => setEventToDelete(null)}
+            >
+              <section
+                className="event-edit-dialog delete-confirmation-dialog"
+                role="alertdialog"
+                aria-modal="true"
+                aria-labelledby="delete-event-title"
+                aria-describedby="delete-event-description"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <h3 id="delete-event-title">Delete this event?</h3>
+                <p id="delete-event-description">
+                  “{eventToDelete.title}” will be permanently removed from the event list.
+                </p>
+                <div className="event-edit-actions">
+                  <button type="button" onClick={() => setEventToDelete(null)}>
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    className="confirm-delete-button"
+                    onClick={() => handleRemoveEvent(eventToDelete.id)}
+                  >
+                    Delete event
+                  </button>
+                </div>
+              </section>
             </div>
           )}
 

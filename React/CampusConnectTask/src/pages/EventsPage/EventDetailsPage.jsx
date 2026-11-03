@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { getEvents } from "../../services/events";
 import { useFavorites } from "../../contexts/FavoritesContext";
 import "./EventDetailsPage.css";
-import { Badge, Card } from "../../components/ui";
+import { Badge, Card } from "../../components/common";
 
 function EventDetailsPage() {
   const { eventId } = useParams();

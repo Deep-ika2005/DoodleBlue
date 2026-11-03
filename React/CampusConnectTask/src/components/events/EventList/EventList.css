@@ -55,31 +55,32 @@
 }
 
 .add-event-card.is-editing-event {
-  border-color: #c9d0ff;
-  box-shadow: 0 0 0 4px #5865dc12, 0 12px 34px #233f7614;
+  border-color: var(--color-primary-border);
+  box-shadow: 0 0 0 4px var(--color-primary-ring), 0 12px 34px #233f7614;
 }
 
 .add-event-heading { margin-bottom: 18px; }
 .add-event-heading > div { display: flex; align-items: center; gap: 10px; }
-.add-event-icon { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 8px; background: #eef0ff; color: #5865dc; font-size: 20px; font-weight: 500; }
+.add-event-icon { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 8px; background: var(--color-primary-soft); color: var(--color-primary); font-size: 20px; font-weight: 500; }
 .add-event-heading h3 { margin: 0; color: #263756; font-size: 16px; }
 .add-event-heading p { margin: 6px 0 0 37px; color: #8290a5; font-size: 12px; }
 .add-event-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
 .add-event-fields label { display: grid; gap: 7px; color: #41516a; font-size: 12px; font-weight: 700; }
+.add-event-field-error { color: #b4233c; font-size: 11px; font-weight: 500; }
 .add-event-label { color: #41516a; font-size: 12px; font-weight: 700; }
 .add-event-label b { color: #d65872; }
 .add-event-fields input, .add-event-fields select, .add-event-fields textarea { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid #dce3ee; border-radius: 9px; outline: 0; background: #fff; color: #27364d; font: inherit; font-size: 13px; transition: border-color .2s ease, box-shadow .2s ease; }
 .add-event-fields input, .add-event-fields select { min-height: 43px; }
 .add-event-fields input::placeholder, .add-event-fields textarea::placeholder { color: #a0aabd; }
-.add-event-fields input:focus, .add-event-fields select:focus, .add-event-fields textarea:focus { border-color: #6872df; box-shadow: 0 0 0 3px #5865dc1a; }
+.add-event-fields input:focus, .add-event-fields select:focus, .add-event-fields textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-ring); }
 .add-event-fields textarea { resize: vertical; }
 .add-event-fields .add-event-description { grid-column: 1 / -1; }
 .add-event-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
-.add-event-footer > span { color: #91a0b3; font-size: 11px; }
+.add-event-footer > span { padding-left: 9px; border-left: 3px solid #d64545; color: #b4233c; font-size: 11px; }
 .add-event-actions { display: flex; gap: 9px; }
-.add-event-footer button { min-height: 40px; padding: 0 17px; border: 0; border-radius: 9px; background: #5865dc; color: #fff; font: inherit; font-size: 12px; font-weight: 700; box-shadow: 0 4px 10px #5865dc30; transition: transform .2s ease, background .2s ease; }
+.add-event-footer button { min-height: 40px; padding: 0 17px; border: 0; border-radius: 9px; background: var(--color-primary); color: #fff; font: inherit; font-size: 12px; font-weight: 700; box-shadow: 0 4px 10px var(--color-primary-ring); transition: transform .2s ease, background .2s ease; }
 .add-event-footer button.add-event-cancel { border: 1px solid #dce3ee; background: #fff; color: #52627a; box-shadow: none; }
-.add-event-footer button:hover:not(:disabled) { transform: translateY(-1px); background: #4652c5; }
+.add-event-footer button:hover:not(:disabled) { transform: translateY(-1px); background: var(--color-primary-hover); }
 .add-event-footer button:disabled { cursor: wait; opacity: .7; }
 
 .event-list-items {
@@ -112,17 +113,17 @@
   margin-bottom: 16px;
   display: grid;
   place-items: center;
-  border: 1px solid #dbe4f5;
+  border: 1px solid var(--color-primary-border);
   border-radius: 18px;
-  background: #edf2ff;
-  color: #5865dc;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
   font-size: 31px;
   line-height: 1;
 }
 
 .events-empty-eyebrow {
   margin: 0 0 8px;
-  color: #5865dc;
+  color: var(--color-primary);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 1.5px;
@@ -169,12 +170,15 @@
 .event-edit-dialog h3 { margin: 0 0 22px; color: #1f2937; font-size: 22px; }
 .event-edit-dialog > label, .event-edit-row label { display: grid; gap: 7px; margin-bottom: 15px; color: #52627a; font-size: 12px; font-weight: 700; }
 .event-edit-dialog input, .event-edit-dialog textarea { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid #d9e2f0; border-radius: 9px; outline: 0; color: #1f2937; font: inherit; font-size: 13px; }
-.event-edit-dialog input:focus, .event-edit-dialog textarea:focus { border-color: #5865dc; box-shadow: 0 0 0 3px #5865dc1c; }
+.event-edit-dialog input:focus, .event-edit-dialog textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-ring); }
 .event-edit-dialog textarea { resize: vertical; }
 .event-edit-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .event-edit-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 8px; }
 .event-edit-actions button { min-height: 40px; padding: 0 14px; border: 1px solid #d9e2f0; border-radius: 9px; background: #fff; color: #52627a; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
-.event-edit-actions button[type="submit"] { border-color: #5865dc; background: #5865dc; color: #fff; }
+.event-edit-actions button[type="submit"] { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+.delete-confirmation-dialog > p { margin: -10px 0 22px; color: #64748b; font-size: 14px; line-height: 1.6; }
+.event-edit-actions .confirm-delete-button { border-color: #b4233c; background: #b4233c; color: #fff; }
+.event-edit-actions .confirm-delete-button:hover { background: #941b30; }
 
 @media (max-width: 700px) {
   .event-list { padding: 26px 18px 32px; }
